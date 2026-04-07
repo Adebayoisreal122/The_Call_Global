@@ -7,28 +7,28 @@ export default function About() {
   const { dark } = useTheme();
 
   return (
-    <section id="about" className={`py-24 ${dark ? 'bg-navy-900' : 'bg-white'}`}>
+    <section id="about" className={`py-24 ${dark ? 'bg-[#04093a]' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Visual side */}
           <div className="relative">
-            <div className={`rounded-3xl overflow-hidden aspect-[4/3] ${dark ? 'bg-navy-800' : 'bg-gray-100'} relative`}>
-              <div className="absolute inset-0 hero-gradient opacity-90 flex flex-col items-center justify-center p-12">
-                <div className="text-yellow-500 text-8xl font-display font-bold mb-6 float-anim">✞</div>
+            <div className={`rounded-3xl overflow-hidden aspect-[4/3] relative hero-gradient`}>
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-12">
+                <img src="/logowhite.png" alt="The Call Global" className="h-36 w-36 object-contain mb-6 float-anim" />
                 <blockquote className="text-white text-center font-body text-xl italic leading-relaxed">
                   "The gifts and the calling of God are irrevocable."
                 </blockquote>
-                <cite className="text-yellow-400 text-sm mt-4 not-italic">— Romans 11:29</cite>
+                <cite className="text-blue-300 text-sm mt-4 not-italic">— Romans 11:29</cite>
               </div>
             </div>
             {/* Floating card */}
             <div className={`absolute -bottom-6 -right-6 p-5 rounded-2xl shadow-2xl max-w-xs
-              ${dark ? 'bg-gray-900 border border-yellow-600/20' : 'bg-white border border-yellow-500/20'}`}>
+              ${dark ? 'bg-[#0a1a6b] border border-blue-500/20' : 'bg-white border border-blue-100 shadow-blue-100'}`}>
               <div className="flex items-start gap-3">
                 <div className="text-3xl">🙏</div>
                 <div>
                   <div className={`font-display font-semibold text-sm ${dark ? 'text-white' : 'text-gray-900'}`}>Founded in Prayer</div>
-                  <div className={`text-xs mt-1 ${dark ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <div className={`text-xs mt-1 ${dark ? 'text-blue-200/60' : 'text-gray-500'}`}>
                     Every initiative, every program, every outreach starts on our knees before the Father.
                   </div>
                 </div>
@@ -38,10 +38,10 @@ export default function About() {
 
           {/* Content side */}
           <div>
-            <div className="divider-gold" style={{ margin: '0 0 1.5rem' }}></div>
+            <div className="divider-navy-left"></div>
             <h2 className={`font-display text-4xl font-bold mb-6 leading-tight ${dark ? 'text-white' : 'text-gray-900'}`}>
               Who We Are &{' '}
-              <span className="gold-text">Why We Exist</span>
+              <span className="brand-text">Why We Exist</span>
             </h2>
             <div className={`space-y-4 font-body text-lg leading-relaxed ${dark ? 'text-gray-300' : 'text-gray-600'}`}>
               <p>
@@ -58,13 +58,13 @@ export default function About() {
             <div className="mt-8 space-y-3">
               {values.map(v => (
                 <div key={v} className="flex items-center gap-3">
-                  <CheckCircle2 size={18} className="text-yellow-500 flex-shrink-0" />
+                  <CheckCircle2 size={18} className="text-[#1e3db5] flex-shrink-0" />
                   <span className={`text-sm font-medium ${dark ? 'text-gray-300' : 'text-gray-700'}`}>{v}</span>
                 </div>
               ))}
             </div>
 
-            <a href="/#join" className="inline-block btn-gold px-7 py-3 rounded-full mt-8 text-sm">
+            <a href="/#join" className="inline-block btn-navy px-7 py-3 rounded-full mt-8 text-sm">
               Become Part of the Story
             </a>
           </div>

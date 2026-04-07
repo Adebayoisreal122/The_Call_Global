@@ -42,7 +42,7 @@ export default function Testimonies() {
                   {t.text}
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center text-white text-sm font-bold">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center text-white text-sm font-bold">
                     {t.name[0]}
                   </div>
                   <div>
@@ -59,7 +59,7 @@ export default function Testimonies() {
         <div className="text-center">
           {!showForm ? (
             <button onClick={() => setShowForm(true)}
-              className="btn-outline-gold px-7 py-3 rounded-full text-sm">
+              className="btn-outline-navy px-7 py-3 rounded-full text-sm">
               Share Your Testimony
             </button>
           ) : (
@@ -75,15 +75,15 @@ export default function Testimonies() {
                   <h3 className={`font-display text-xl font-semibold mb-2 ${dark ? 'text-white' : 'text-gray-900'}`}>Share Your Story</h3>
                   <input value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                     placeholder="Your name *" required
-                    className={`w-full px-4 py-3 rounded-xl text-sm input-gold ${dark ? 'text-white' : 'text-gray-900'}`} />
+                    className={`w-full px-4 py-3 rounded-xl text-sm input-navy ${dark ? 'text-white' : 'text-gray-900'}`} />
                   <input value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))}
                     placeholder="Your city / country"
-                    className={`w-full px-4 py-3 rounded-xl text-sm input-gold ${dark ? 'text-white' : 'text-gray-900'}`} />
+                    className={`w-full px-4 py-3 rounded-xl text-sm input-navy ${dark ? 'text-white' : 'text-gray-900'}`} />
                   <textarea value={form.text} onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
                     placeholder="Share what God has done in your life... *" required rows={4}
-                    className={`w-full px-4 py-3 rounded-xl text-sm input-gold resize-none ${dark ? 'text-white' : 'text-gray-900'}`} />
+                    className={`w-full px-4 py-3 rounded-xl text-sm input-navy resize-none ${dark ? 'text-white' : 'text-gray-900'}`} />
                   <div className="flex gap-3">
-                    <button type="submit" className="btn-gold flex-1 py-3 rounded-xl text-sm">Submit Testimony</button>
+                    <button type="submit" className="btn-navy flex-1 py-3 rounded-xl text-sm">Submit Testimony</button>
                     <button type="button" onClick={() => setShowForm(false)}
                       className={`px-4 rounded-xl text-sm ${dark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-800'}`}>
                       Cancel

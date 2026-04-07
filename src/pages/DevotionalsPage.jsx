@@ -11,7 +11,7 @@ export default function DevotionalsPage() {
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="divider-gold"></div>
+          <div className="divider-navy"></div>
           <h1 className={`font-display text-5xl font-bold mb-4 ${dark ? 'text-white' : 'text-gray-900'}`}>
             Daily <span className="gold-text">Devotionals</span>
           </h1>
@@ -22,7 +22,7 @@ export default function DevotionalsPage() {
 
         {devotionals.length === 0 ? (
           <div className="text-center py-20">
-            <BookOpen size={48} className="mx-auto text-yellow-500/40 mb-4" />
+            <BookOpen size={48} className="mx-auto text-blue-500/40 mb-4" />
             <p className={`font-body text-xl ${dark ? 'text-gray-500' : 'text-gray-400'}`}>No devotionals yet. Check back soon!</p>
           </div>
         ) : (
@@ -32,7 +32,7 @@ export default function DevotionalsPage() {
                 className={`p-8 rounded-3xl ${dark ? 'bg-white/4 border border-white/8' : 'bg-white border border-gray-100 shadow-sm'}`}>
                 <div className="flex items-center gap-3 mb-5">
                   <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-                    ${dark ? 'bg-yellow-500/15 text-yellow-400' : 'bg-yellow-50 text-yellow-700 border border-yellow-200'}`}>
+                    ${dark ? 'bg-blue-500/15 text-blue-400' : 'bg-yellow-50 text-blue-700 border border-blue-200'}`}>
                     {d.category}
                   </span>
                   <span className={`flex items-center gap-1 text-xs ${dark ? 'text-gray-500' : 'text-gray-400'}`}>
@@ -42,7 +42,7 @@ export default function DevotionalsPage() {
                 </div>
 
                 <h2 className={`font-display text-2xl font-bold mb-2 ${dark ? 'text-white' : 'text-gray-900'}`}>{d.title}</h2>
-                <div className={`font-body text-sm mb-4 italic ${dark ? 'text-yellow-400/80' : 'text-yellow-700'}`}>
+                <div className={`font-body text-sm mb-4 italic ${dark ? 'text-blue-400/80' : 'text-blue-700'}`}>
                   📖 {d.scripture}
                 </div>
                 <p className={`font-body text-lg leading-relaxed ${dark ? 'text-gray-300' : 'text-gray-700'}`}>{d.content}</p>

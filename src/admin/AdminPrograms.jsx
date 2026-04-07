@@ -14,7 +14,7 @@ export default function AdminPrograms() {
   const [form, setForm] = useState(emptyForm);
 
   const card = `rounded-2xl p-6 ${dark ? 'bg-white/4 border border-white/8' : 'bg-white border border-gray-100 shadow-sm'}`;
-  const input = `w-full px-4 py-3 rounded-xl text-sm input-gold ${dark ? 'text-white' : 'text-gray-900'}`;
+  const input = `w-full px-4 py-3 rounded-xl text-sm input-navy ${dark ? 'text-white' : 'text-gray-900'}`;
 
   const openNew = () => { setForm(emptyForm); setEditing(null); setShowForm(true); };
   const openEdit = (p) => { setForm(p); setEditing(p.id); setShowForm(true); };
@@ -35,7 +35,7 @@ export default function AdminPrograms() {
           <h2 className={`font-display text-2xl font-bold ${dark ? 'text-white' : 'text-gray-900'}`}>Programs</h2>
           <p className={`text-sm mt-1 ${dark ? 'text-gray-400' : 'text-gray-500'}`}>{programs.length} total programs</p>
         </div>
-        <button onClick={openNew} className="btn-gold px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
+        <button onClick={openNew} className="btn-navy px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
           <Plus size={16} /> Add Program
         </button>
       </div>
@@ -71,11 +71,11 @@ export default function AdminPrograms() {
                 placeholder="Program description..." rows={3} className={`${input} resize-none`} />
               <label className="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" checked={form.upcoming} onChange={e => setForm(f => ({ ...f, upcoming: e.target.checked }))}
-                  className="w-4 h-4 accent-yellow-500" />
+                  className="w-4 h-4 accent-blue-700" />
                 <span className={`text-sm ${dark ? 'text-gray-300' : 'text-gray-700'}`}>Show as Upcoming on site</span>
               </label>
               <div className="flex gap-3 pt-2">
-                <button type="submit" className="btn-gold flex-1 py-3 rounded-xl text-sm">
+                <button type="submit" className="btn-navy flex-1 py-3 rounded-xl text-sm">
                   {editing ? 'Update Program' : 'Create Program'}
                 </button>
                 <button type="button" onClick={() => setShowForm(false)}
@@ -91,7 +91,7 @@ export default function AdminPrograms() {
       {/* Programs List */}
       {programs.length === 0 ? (
         <div className={`${card} text-center py-14`}>
-          <Calendar size={40} className="mx-auto text-yellow-500/40 mb-3" />
+          <Calendar size={40} className="mx-auto text-blue-500/40 mb-3" />
           <p className={`font-body text-lg ${dark ? 'text-gray-400' : 'text-gray-500'}`}>No programs yet. Create your first one!</p>
         </div>
       ) : (
@@ -100,15 +100,15 @@ export default function AdminPrograms() {
             <div key={p.id} className={`${card} flex items-start gap-5`}>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs bg-yellow-500/15 text-yellow-500 px-2 py-0.5 rounded-full font-medium">{p.type}</span>
+                  <span className="text-xs bg-blue-500/15 text-blue-500 px-2 py-0.5 rounded-full font-medium">{p.type}</span>
                   {p.upcoming && <span className="text-xs bg-green-500/15 text-green-400 px-2 py-0.5 rounded-full">Upcoming</span>}
                 </div>
                 <h4 className={`font-display text-lg font-semibold mb-2 ${dark ? 'text-white' : 'text-gray-900'}`}>{p.title}</h4>
                 <p className={`text-sm mb-3 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>{p.description}</p>
                 <div className={`flex flex-wrap gap-4 text-xs ${dark ? 'text-gray-500' : 'text-gray-400'}`}>
-                  <span className="flex items-center gap-1"><Calendar size={12} className="text-yellow-500" /> {p.date}</span>
-                  <span className="flex items-center gap-1"><Clock size={12} className="text-yellow-500" /> {p.time}</span>
-                  <span className="flex items-center gap-1"><MapPin size={12} className="text-yellow-500" /> {p.location}</span>
+                  <span className="flex items-center gap-1"><Calendar size={12} className="text-blue-500" /> {p.date}</span>
+                  <span className="flex items-center gap-1"><Clock size={12} className="text-blue-500" /> {p.time}</span>
+                  <span className="flex items-center gap-1"><MapPin size={12} className="text-blue-500" /> {p.location}</span>
                 </div>
               </div>
               <div className="flex gap-2 flex-shrink-0">

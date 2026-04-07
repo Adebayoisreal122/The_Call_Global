@@ -27,7 +27,7 @@ export default function AdminTestimonies() {
             <div key={t.id} className={`${card} relative`}>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
                     {t.name?.[0] || '?'}
                   </div>
                   <div>
@@ -76,7 +76,7 @@ export default function AdminTestimonies() {
       <Section
         title="Approved & Published"
         items={approved}
-        icon={<Star size={18} className="text-yellow-500" />}
+        icon={<Star size={18} className="text-blue-500" />}
       />
     </div>
   );

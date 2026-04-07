@@ -17,7 +17,7 @@ export default function AdminPrayerRequests() {
 
       {prayerRequests.length === 0 ? (
         <div className={`${card} text-center py-16`}>
-          <MessageSquare size={40} className="mx-auto text-yellow-500/40 mb-3" />
+          <MessageSquare size={40} className="mx-auto text-blue-500/40 mb-3" />
           <p className={`font-body text-lg ${dark ? 'text-gray-400' : 'text-gray-500'}`}>No prayer requests yet.</p>
           <p className={`text-sm mt-1 ${dark ? 'text-gray-500' : 'text-gray-400'}`}>When visitors submit prayer requests, they'll appear here.</p>
         </div>
@@ -46,9 +46,9 @@ export default function AdminPrayerRequests() {
       )}
 
       {/* Scripture Encouragement */}
-      <div className={`p-5 rounded-2xl border border-yellow-600/20 ${dark ? 'bg-yellow-500/5' : 'bg-yellow-50'}`}>
+      <div className={`p-5 rounded-2xl border border-blue-600/20 ${dark ? 'bg-blue-500/5' : 'bg-blue-50'}`}>
         <p className={`font-body italic text-sm ${dark ? 'text-gray-300' : 'text-gray-700'}`}>
-          "The prayer of a righteous person is powerful and effective." — <span className="text-yellow-600 not-italic font-medium">James 5:16b</span>
+          "The prayer of a righteous person is powerful and effective." — <span className="text-blue-600 not-italic font-medium">James 5:16b</span>
         </p>
       </div>
     </div>

@@ -9,7 +9,7 @@ export default function AdminDashboard() {
 
   const stats = [
     { label: 'Programs', value: programs.length, icon: <Calendar size={20} />, path: '/admin/programs', color: 'from-blue-500 to-blue-600', sub: `${programs.filter(p => p.upcoming).length} upcoming` },
-    { label: 'Devotionals', value: devotionals.length, icon: <BookOpen size={20} />, path: '/admin/devotionals', color: 'from-yellow-500 to-amber-600', sub: 'Published' },
+    { label: 'Devotionals', value: devotionals.length, icon: <BookOpen size={20} />, path: '/admin/devotionals', color: 'from-[#0a1a6b] to-[#1e3db5]', sub: 'Published' },
     { label: 'Testimonies', value: testimonies.length, icon: <Star size={20} />, path: '/admin/testimonies', color: 'from-purple-500 to-purple-600', sub: `${testimonies.filter(t => !t.approved).length} pending review` },
     { label: 'Prayer Requests', value: prayerRequests.length, icon: <MessageSquare size={20} />, path: '/admin/prayer-requests', color: 'from-green-500 to-green-600', sub: 'All time' },
     { label: 'Registrations', value: registrations.length, icon: <Users size={20} />, path: '/admin/registrations', color: 'from-pink-500 to-pink-600', sub: 'New members' },
@@ -21,7 +21,7 @@ export default function AdminDashboard() {
     <div className="space-y-8 max-w-6xl">
       {/* Welcome */}
       <div className={`${card} relative overflow-hidden`}>
-        <div className="absolute right-6 top-4 text-yellow-500/10 text-8xl font-display font-bold select-none">✞</div>
+        <div className="absolute right-6 top-4 text-blue-500/10 text-8xl font-display font-bold select-none">✞</div>
         <div className="relative">
           <h1 className={`font-display text-3xl font-bold mb-1 ${dark ? 'text-white' : 'text-gray-900'}`}>
             Welcome, Admin 👋
@@ -29,11 +29,11 @@ export default function AdminDashboard() {
           <p className={`${dark ? 'text-gray-400' : 'text-gray-600'} text-sm`}>
             Manage The Call Global Ministry content from here.
           </p>
-          <div className={`mt-4 p-4 rounded-xl border border-yellow-600/20 ${dark ? 'bg-yellow-500/5' : 'bg-yellow-50'} inline-block`}>
+          <div className={`mt-4 p-4 rounded-xl border border-blue-600/20 ${dark ? 'bg-blue-500/5' : 'bg-blue-50'} inline-block`}>
             <p className={`font-body italic text-sm ${dark ? 'text-gray-300' : 'text-gray-700'}`}>
               "And he gave the apostles, the prophets, the evangelists, the shepherds and teachers, to equip the saints for the work of ministry..."
             </p>
-            <cite className="text-yellow-600 text-xs not-italic block mt-1">— Ephesians 4:11-12</cite>
+            <cite className="text-blue-600 text-xs not-italic block mt-1">— Ephesians 4:11-12</cite>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {stats.map(s => (
           <Link key={s.label} to={s.path}
-            className={`${card} group hover:border-yellow-600/30 transition-all`}>
+            className={`${card} group hover:border-blue-600/30 transition-all`}>
             <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform`}>
               {s.icon}
             </div>
@@ -59,7 +59,7 @@ export default function AdminDashboard() {
         <div className={card}>
           <div className="flex items-center justify-between mb-5">
             <h3 className={`font-display font-semibold ${dark ? 'text-white' : 'text-gray-900'}`}>Recent Registrations</h3>
-            <Link to="/admin/registrations" className="text-yellow-500 text-xs flex items-center gap-1 hover:gap-2 transition-all">
+            <Link to="/admin/registrations" className="text-blue-500 text-xs flex items-center gap-1 hover:gap-2 transition-all">
               View all <ArrowRight size={12} />
             </Link>
           </div>
@@ -69,7 +69,7 @@ export default function AdminDashboard() {
             <div className="space-y-3">
               {[...registrations].reverse().slice(0, 5).map(r => (
                 <div key={r.id} className={`flex items-center gap-3 py-2 border-b ${dark ? 'border-white/5' : 'border-gray-50'}`}>
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                     {r.name?.[0] || '?'}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -87,7 +87,7 @@ export default function AdminDashboard() {
         <div className={card}>
           <div className="flex items-center justify-between mb-5">
             <h3 className={`font-display font-semibold ${dark ? 'text-white' : 'text-gray-900'}`}>Pending Testimonies</h3>
-            <Link to="/admin/testimonies" className="text-yellow-500 text-xs flex items-center gap-1 hover:gap-2 transition-all">
+            <Link to="/admin/testimonies" className="text-blue-500 text-xs flex items-center gap-1 hover:gap-2 transition-all">
               View all <ArrowRight size={12} />
             </Link>
           </div>
@@ -119,7 +119,7 @@ export default function AdminDashboard() {
             { label: 'Review Testimonies', to: '/admin/testimonies' },
             { label: 'View Prayer Requests', to: '/admin/prayer-requests' },
           ].map(a => (
-            <Link key={a.label} to={a.to} className="btn-outline-gold px-5 py-2 rounded-full text-sm">
+            <Link key={a.label} to={a.to} className="btn-outline-navy px-5 py-2 rounded-full text-sm">
               {a.label}
             </Link>
           ))}

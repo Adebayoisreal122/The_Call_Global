@@ -35,7 +35,7 @@ export default function AdminRegistrations() {
         </div>
         {registrations.length > 0 && (
           <button onClick={exportCSV}
-            className="btn-outline-gold px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
+            className="btn-outline-navy px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
             <Download size={15} /> Export CSV
           </button>
         )}
@@ -47,13 +47,13 @@ export default function AdminRegistrations() {
           <Search size={16} className={`absolute left-4 top-1/2 -translate-y-1/2 ${dark ? 'text-gray-500' : 'text-gray-400'}`} />
           <input value={search} onChange={e => setSearch(e.target.value)}
             placeholder="Search by name, email, or country..."
-            className={`w-full pl-10 pr-4 py-3 rounded-xl text-sm input-gold max-w-md ${dark ? 'text-white' : 'text-gray-900'}`} />
+            className={`w-full pl-10 pr-4 py-3 rounded-xl text-sm input-navy max-w-md ${dark ? 'text-white' : 'text-gray-900'}`} />
         </div>
       )}
 
       {registrations.length === 0 ? (
         <div className={`${card} p-6 text-center py-16`}>
-          <Users size={40} className="mx-auto text-yellow-500/40 mb-3" />
+          <Users size={40} className="mx-auto text-blue-500/40 mb-3" />
           <p className={`font-body text-lg ${dark ? 'text-gray-400' : 'text-gray-500'}`}>No registrations yet.</p>
         </div>
       ) : (
@@ -72,7 +72,7 @@ export default function AdminRegistrations() {
                   <tr key={r.id} className={`border-b transition-colors ${dark ? 'border-white/5 hover:bg-white/3' : 'border-gray-50 hover:bg-gray-50'}`}>
                     <td className="px-5 py-3.5">
                       <div className="flex items-center gap-3">
-                        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                           {r.name?.[0] || '?'}
                         </div>
                         <span className={`font-medium ${dark ? 'text-white' : 'text-gray-900'}`}>{r.name}</span>
@@ -83,7 +83,7 @@ export default function AdminRegistrations() {
                     <td className={`px-5 py-3.5 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>{r.country || '—'}</td>
                     <td className="px-5 py-3.5">
                       {r.interest ? (
-                        <span className="text-xs bg-yellow-500/15 text-yellow-500 px-2 py-0.5 rounded-full">{r.interest}</span>
+                        <span className="text-xs bg-blue-500/15 text-blue-500 px-2 py-0.5 rounded-full">{r.interest}</span>
                       ) : '—'}
                     </td>
                     <td className={`px-5 py-3.5 text-xs ${dark ? 'text-gray-500' : 'text-gray-400'}`}>{r.date}</td>

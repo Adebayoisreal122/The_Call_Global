@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Moon, Menu, X, Cross } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const navLinks = [
@@ -25,22 +25,30 @@ export default function Navbar() {
   }, []);
 
   const isAdmin = location.pathname.startsWith('/admin');
+  const hasBg = scrolled || isAdmin;
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 nav-glass transition-all duration-300
-      ${scrolled || isAdmin
-        ? dark ? 'bg-navy-900/95 border-b border-gold-600/20' : 'bg-white/95 border-b border-gold-500/20 shadow-sm'
+      ${hasBg
+        ? dark
+          ? 'bg-[#030a2e]/95 border-b border-white/10 shadow-lg shadow-black/30'
+          : 'bg-white/95 border-b border-blue-100 shadow-sm'
         : 'bg-transparent'
       }`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg group-hover:shadow-yellow-500/30 transition-shadow">
-            <span className="text-white text-lg font-bold font-display">✞</span>
-          </div>
+          <img
+            src={dark || !hasBg ? '/logowhite.png' : '/logo.png'}
+            alt="The Call Global"
+            className="h-12 w-12 object-contain rounded-full transition-all group-hover:scale-105"
+            style={dark || !hasBg ? { filter: 'brightness(1.1)' } : {}}
+          />
           <div>
-            <div className="font-display text-lg font-bold leading-tight gold-text">The Call Global</div>
-            <div className={`text-xs tracking-widest uppercase ${dark ? 'text-gray-400' : 'text-gray-500'}`}>Ministry</div>
+            <div className={`font-display text-lg font-bold leading-tight ${dark || !hasBg ? 'brand-text-light' : 'brand-text'}`}>
+              The Call Global
+            </div>
+            <div className={`text-xs tracking-widest uppercase ${dark || !hasBg ? 'text-blue-200/60' : 'text-blue-400/70'}`}>Ministry</div>
           </div>
         </Link>
 
@@ -48,7 +56,11 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map(l => (
             <a key={l.label} href={l.href}
-              className={`text-sm font-medium transition-colors hover:text-yellow-500 ${dark ? 'text-gray-300' : 'text-gray-600'}`}>
+              className={`text-sm font-medium transition-colors
+                ${dark || !hasBg
+                  ? 'text-blue-100/80 hover:text-white'
+                  : 'text-gray-600 hover:text-blue-700'
+                }`}>
               {l.label}
             </a>
           ))}
@@ -57,33 +69,37 @@ export default function Navbar() {
         {/* Actions */}
         <div className="flex items-center gap-3">
           <button onClick={toggle}
-            className={`p-2 rounded-full transition-all hover:bg-yellow-500/10 ${dark ? 'text-gray-300' : 'text-gray-600'}`}>
+            className={`p-2 rounded-full transition-all
+              ${dark || !hasBg ? 'text-blue-200 hover:bg-white/10' : 'text-blue-600 hover:bg-blue-50'}`}>
             {dark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          <Link to="/#join"
-            className="hidden md:inline-flex btn-gold px-5 py-2 rounded-full text-sm">
+          <a href="/#join"
+            className={`hidden md:inline-flex btn-navy px-5 py-2 rounded-full text-sm`}>
             Join Us
-          </Link>
+          </a>
           <button onClick={() => setOpen(!open)} className="md:hidden p-2">
-            {open ? <X size={20} className={dark ? 'text-white' : 'text-gray-800'} />
-              : <Menu size={20} className={dark ? 'text-white' : 'text-gray-800'} />}
+            {open
+              ? <X size={20} className={dark || !hasBg ? 'text-white' : 'text-gray-800'} />
+              : <Menu size={20} className={dark || !hasBg ? 'text-white' : 'text-gray-800'} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {open && (
-        <div className={`md:hidden px-6 pb-6 pt-2 space-y-3 border-t ${dark ? 'bg-navy-900/98 border-yellow-600/20' : 'bg-white/98 border-yellow-500/20'}`}>
+        <div className={`md:hidden px-6 pb-6 pt-2 space-y-3 border-t
+          ${dark ? 'bg-[#030a2e]/98 border-white/10' : 'bg-white/98 border-blue-100'}`}>
           {navLinks.map(l => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)}
-              className={`block py-2 text-sm font-medium border-b border-dashed ${dark ? 'text-gray-300 border-white/10' : 'text-gray-600 border-gray-200'}`}>
+              className={`block py-2.5 text-sm font-medium border-b border-dashed
+                ${dark ? 'text-blue-200 border-white/10' : 'text-gray-600 border-gray-200'}`}>
               {l.label}
             </a>
           ))}
-          <Link to="/#join" onClick={() => setOpen(false)}
-            className="block btn-gold px-5 py-3 rounded-full text-sm text-center mt-4">
+          <a href="/#join" onClick={() => setOpen(false)}
+            className="block btn-navy px-5 py-3 rounded-full text-sm text-center mt-4">
             Join The Ministry
-          </Link>
+          </a>
         </div>
       )}
     </nav>

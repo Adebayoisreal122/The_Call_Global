@@ -27,7 +27,7 @@ export default function Contact() {
     setTimeout(() => setCDone(false), 3000);
   };
 
-  const inputClass = `w-full px-4 py-3 rounded-xl text-sm input-gold ${dark ? 'text-white' : 'text-gray-900'}`;
+  const inputClass = `w-full px-4 py-3 rounded-xl text-sm input-navy ${dark ? 'text-white' : 'text-gray-900'}`;
 
   return (
     <section id="contact" className={`py-24 ${dark ? 'bg-navy-900' : 'bg-white'}`}>
@@ -51,7 +51,7 @@ export default function Contact() {
               { icon: <MapPin size={18} />, label: 'Base Location', val: 'Lagos, Nigeria (Global Ministry)' },
             ].map(c => (
               <div key={c.label} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-500 flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 flex-shrink-0">
                   {c.icon}
                 </div>
                 <div>
@@ -61,7 +61,7 @@ export default function Contact() {
               </div>
             ))}
 
-            <div className={`mt-8 p-5 rounded-2xl border border-yellow-600/20 ${dark ? 'bg-yellow-500/5' : 'bg-yellow-50'}`}>
+            <div className={`mt-8 p-5 rounded-2xl border border-blue-600/20 ${dark ? 'bg-blue-500/5' : 'bg-blue-50'}`}>
               <h4 className={`font-display font-semibold mb-2 ${dark ? 'text-white' : 'text-gray-900'}`}>Book a Consultation</h4>
               <p className={`text-sm font-body ${dark ? 'text-gray-400' : 'text-gray-600'}`}>
                 For pastoral counseling, ministry partnership, or speaking invitations, reach out and we'll schedule a session with a ministry leader.
@@ -76,7 +76,7 @@ export default function Contact() {
               {['prayer', 'contact'].map(t => (
                 <button key={t} onClick={() => setTab(t)}
                   className={`flex-1 py-3 text-sm font-medium capitalize transition-all
-                    ${tab === t ? 'btn-gold' : dark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-800'}`}>
+                    ${tab === t ? 'btn-navy' : dark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-800'}`}>
                   {t === 'prayer' ? '🙏 Prayer Request' : '✉️ Send Message'}
                 </button>
               ))}
@@ -98,7 +98,7 @@ export default function Contact() {
                   <textarea value={pForm.request} onChange={e => setPForm(f => ({ ...f, request: e.target.value }))}
                     placeholder="Share your prayer request... We keep all requests in strict confidence." required
                     rows={5} className={`${inputClass} resize-none`} />
-                  <button type="submit" className="btn-gold w-full py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
+                  <button type="submit" className="btn-navy w-full py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
                     <Send size={15} /> Send Prayer Request
                   </button>
                 </form>
@@ -122,7 +122,7 @@ export default function Contact() {
                     placeholder="Subject" className={inputClass} />
                   <textarea value={cForm.message} onChange={e => setCForm(f => ({ ...f, message: e.target.value }))}
                     placeholder="Your message..." required rows={5} className={`${inputClass} resize-none`} />
-                  <button type="submit" className="btn-gold w-full py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
+                  <button type="submit" className="btn-navy w-full py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
                     <Send size={15} /> Send Message
                   </button>
                 </form>

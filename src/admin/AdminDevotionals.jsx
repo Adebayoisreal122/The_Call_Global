@@ -13,7 +13,7 @@ export default function AdminDevotionals() {
   const [form, setForm] = useState(emptyForm);
 
   const card = `rounded-2xl p-6 ${dark ? 'bg-white/4 border border-white/8' : 'bg-white border border-gray-100 shadow-sm'}`;
-  const input = `w-full px-4 py-3 rounded-xl text-sm input-gold ${dark ? 'text-white' : 'text-gray-900'}`;
+  const input = `w-full px-4 py-3 rounded-xl text-sm input-navy ${dark ? 'text-white' : 'text-gray-900'}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ export default function AdminDevotionals() {
           <h2 className={`font-display text-2xl font-bold ${dark ? 'text-white' : 'text-gray-900'}`}>Devotionals</h2>
           <p className={`text-sm mt-1 ${dark ? 'text-gray-400' : 'text-gray-500'}`}>{devotionals.length} devotionals published</p>
         </div>
-        <button onClick={() => setShowForm(true)} className="btn-gold px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
+        <button onClick={() => setShowForm(true)} className="btn-navy px-5 py-2.5 rounded-xl text-sm flex items-center gap-2">
           <Plus size={16} /> Post Devotional
         </button>
       </div>
@@ -63,7 +63,7 @@ export default function AdminDevotionals() {
                   className={`${input} ${dark ? 'bg-gray-900 [color-scheme:dark]' : ''}`} />
               </div>
               <div className="flex gap-3 pt-2">
-                <button type="submit" className="btn-gold flex-1 py-3 rounded-xl text-sm">Publish Devotional</button>
+                <button type="submit" className="btn-navy flex-1 py-3 rounded-xl text-sm">Publish Devotional</button>
                 <button type="button" onClick={() => setShowForm(false)}
                   className={`px-5 rounded-xl text-sm border ${dark ? 'border-white/15 text-gray-400' : 'border-gray-200 text-gray-500'}`}>
                   Cancel
@@ -77,7 +77,7 @@ export default function AdminDevotionals() {
       {/* List */}
       {devotionals.length === 0 ? (
         <div className={`${card} text-center py-14`}>
-          <BookOpen size={40} className="mx-auto text-yellow-500/40 mb-3" />
+          <BookOpen size={40} className="mx-auto text-blue-500/40 mb-3" />
           <p className={`font-body text-lg ${dark ? 'text-gray-400' : 'text-gray-500'}`}>No devotionals yet. Share the Word!</p>
         </div>
       ) : (
@@ -86,11 +86,11 @@ export default function AdminDevotionals() {
             <div key={d.id} className={`${card} flex items-start gap-5`}>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs bg-yellow-500/15 text-yellow-500 px-2 py-0.5 rounded-full">{d.category}</span>
+                  <span className="text-xs bg-blue-500/15 text-blue-500 px-2 py-0.5 rounded-full">{d.category}</span>
                   <span className={`text-xs ${dark ? 'text-gray-500' : 'text-gray-400'}`}>{d.date}</span>
                 </div>
                 <h4 className={`font-display text-lg font-semibold mb-1 ${dark ? 'text-white' : 'text-gray-900'}`}>{d.title}</h4>
-                <p className={`text-sm italic mb-2 ${dark ? 'text-yellow-400/70' : 'text-yellow-700'}`}>📖 {d.scripture}</p>
+                <p className={`text-sm italic mb-2 ${dark ? 'text-blue-400/70' : 'text-yellow-700'}`}>📖 {d.scripture}</p>
                 <p className={`text-sm line-clamp-2 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>{d.content}</p>
                 <p className={`text-xs mt-2 ${dark ? 'text-gray-500' : 'text-gray-400'}`}>By {d.author}</p>
               </div>

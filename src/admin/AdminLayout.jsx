@@ -32,13 +32,13 @@ export default function AdminLayout() {
 
   const Sidebar = () => (
     <div className={`h-full flex flex-col admin-sidebar`}>
-      <div className="p-6 border-b border-yellow-600/15">
+      <div className="p-6 border-b border-blue-600/15">
         <Link to="/" className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center">
-            <span className="text-white font-bold">✞</span>
+          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center">
+            <img src="/logowhite.png" alt="TCG" className="h-7 w-7 object-contain rounded-full" />
           </div>
           <div>
-            <div className="font-display text-sm font-bold gold-text">The Call Global</div>
+            <div className="font-display text-sm font-bold brand-text">The Call Global</div>
             <div className="text-gray-500 text-xs">Admin Portal</div>
           </div>
         </Link>
@@ -53,10 +53,10 @@ export default function AdminLayout() {
               onClick={() => setSidebarOpen(false)}
               className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all group
                 ${active
-                  ? 'bg-yellow-500/15 text-yellow-400 border border-yellow-600/25'
+                  ? 'bg-blue-500/15 text-blue-400 border border-blue-600/25'
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }`}>
-              <span className={active ? 'text-yellow-400' : 'text-gray-500 group-hover:text-gray-300'}>
+              <span className={active ? 'text-blue-400' : 'text-gray-500 group-hover:text-gray-300'}>
                 {item.icon}
               </span>
               <span className="text-sm font-medium flex-1">{item.label}</span>
@@ -65,13 +65,13 @@ export default function AdminLayout() {
                   {badge}
                 </span>
               )}
-              {active && <ChevronRight size={14} className="text-yellow-500" />}
+              {active && <ChevronRight size={14} className="text-blue-500" />}
             </Link>
           );
         })}
       </nav>
 
-      <div className="p-4 border-t border-yellow-600/15">
+      <div className="p-4 border-t border-blue-600/15">
         <Link to="/"
           className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all text-sm">
           <LogOut size={16} />
@@ -111,7 +111,7 @@ export default function AdminLayout() {
             <button onClick={toggle} className={`p-2 rounded-full hover:bg-white/10 transition-colors ${dark ? 'text-gray-300' : 'text-gray-600'}`}>
               {dark ? <Sun size={17} /> : <Moon size={17} />}
             </button>
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center text-white text-xs font-bold">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center text-white text-xs font-bold">
               A
             </div>
           </div>
