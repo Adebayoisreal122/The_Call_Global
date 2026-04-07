@@ -69,15 +69,15 @@ export default function Join() {
                   placeholder="Country / City"
                   className={`w-full px-4 py-3 rounded-xl text-sm input-gold ${dark ? 'text-white' : 'text-gray-900'}`} />
                 <select value={form.interest} onChange={e => setForm(f => ({ ...f, interest: e.target.value }))}
-                  className={`w-full px-4 py-3 rounded-xl text-sm input-gold ${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-white'}`}>
-                  <option value="">Area of Interest</option>
-                  <option>Prayer & Intercession</option>
-                  <option>Word Ministry / Teaching</option>
-                  <option>Music & Worship</option>
-                  <option>Media & Technology</option>
-                  <option>Missions & Evangelism</option>
-                  <option>Youth Ministry</option>
-                  <option>General Member</option>
+                  className={`w-full px-4 py-3 rounded-xl text-sm input-gold ${dark ? 'text-white bg-orange-900' : 'text-gray-900 bg-dark'}`}>
+                  <option className={`${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-dark'}`} value="">Area of Your Interest</option>
+                  <option className={`${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-dark'}`}>Prayer & Intercession</option>
+                  <option className={`${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-dark'}`}>Word Ministry / Teaching</option>
+                  <option className={`${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-dark'}`}>Music & Worship</option>
+                  <option className={`${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-dark'}`}>Media & Technology</option>
+                  <option className={`${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-dark'}`}>Missions & Evangelism</option>
+                  <option className={`${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-dark'}`}>Youth Ministry</option>
+                  <option className={`${dark ? 'text-white bg-gray-900' : 'text-gray-900 bg-dark'}`}>General Member</option>
                 </select>
                 <button type="submit" className="btn-gold w-full py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
                   Join The Ministry <ArrowRight size={16} />
