@@ -1,140 +1,121 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import * as api from '../services/api';
 
 const MinistryContext = createContext();
 
-const defaultPrograms = [
-  {
-    id: 1, title: 'Sunday Worship Service', type: 'Worship',
-    date: '2025-12-07', time: '9:00 AM', location: 'Online & Physical',
-    description: 'Join us for a powerful time of worship, prayer, and the Word.',
-    image: null, upcoming: true
-  },
-  {
-    id: 2, title: 'Kingdom Fireside Night', type: 'Prayer',
-    date: '2025-12-13', time: '8:00 PM', location: 'Online (Zoom)',
-    description: 'An intimate night of prayer, intercession and prophetic declarations.',
-    image: null, upcoming: true
-  },
-  {
-    id: 3, title: 'The Call Conference 2025', type: 'Conference',
-    date: '2025-12-20', time: '10:00 AM', location: 'Lagos, Nigeria',
-    description: 'Our annual gathering of believers across nations — expect an encounter.',
-    image: null, upcoming: true
-  },
-];
-
-const defaultTestimonies = [
-  {
-    id: 1, name: 'Amara O.', location: 'Abuja, Nigeria',
-    text: 'Through The Call Global, I found my purpose and calling. The Word ministry transformed my life completely.',
-    date: '2025-11-20', approved: true
-  },
-  {
-    id: 2, name: 'David K.', location: 'Accra, Ghana',
-    text: 'I was healed of a chronic condition during one of the online prayer sessions. God is faithful!',
-    date: '2025-11-15', approved: true
-  },
-  {
-    id: 3, name: 'Faith E.', location: 'London, UK',
-    text: 'This ministry gave me a community when I felt alone in my faith journey. I am forever grateful.',
-    date: '2025-11-10', approved: true
-  },
-];
-
-const defaultDevotionals = [
-  {
-    id: 1, title: 'Walk in Your Calling', scripture: 'Romans 8:28',
-    content: 'God\'s call on your life is irrevocable. Today, take one bold step towards what He has placed in your heart. The season of hesitation is over — this is your moment.',
-    author: 'Pastor Emmanuel A.', date: '2025-12-04', category: 'Faith'
-  },
-  {
-    id: 2, title: 'The Power of Intercession', scripture: 'James 5:16',
-    content: 'Prayer is not a last resort — it is our first response. When we intercede for others, we partner with heaven to bring transformation to the earth.',
-    author: 'Pastor Emmanuel A.', date: '2025-12-01', category: 'Prayer'
-  },
-];
-
 export function MinistryProvider({ children }) {
-  const [programs, setPrograms] = useState(() => {
-    const stored = localStorage.getItem('tcg-programs');
-    return stored ? JSON.parse(stored) : defaultPrograms;
+  const [programs, setPrograms] = useState([]);
+  const [devotionals, setDevotionals] = useState([]);
+  const [latestDevotional, setLatestDevotional] = useState(null);
+  const [testimonies, setTestimonies] = useState([]);
+  const [allTestimonies, setAllTestimonies] = useState([]);
+  const [prayerRequests, setPrayerRequests] = useState([]);
+  const [registrations, setRegistrations] = useState([]);
+  const [loading, setLoading] = useState({
+    programs: true, devotionals: true, latestDevotional: true, testimonies: true,
+    prayerRequests: false, registrations: false,
   });
-  const [testimonies, setTestimonies] = useState(() => {
-    const stored = localStorage.getItem('tcg-testimonies');
-    return stored ? JSON.parse(stored) : defaultTestimonies;
-  });
-  const [devotionals, setDevotionals] = useState(() => {
-    const stored = localStorage.getItem('tcg-devotionals');
-    return stored ? JSON.parse(stored) : defaultDevotionals;
-  });
-  const [prayerRequests, setPrayerRequests] = useState(() => {
-    const stored = localStorage.getItem('tcg-prayer-requests');
-    return stored ? JSON.parse(stored) : [];
-  });
-  const [registrations, setRegistrations] = useState(() => {
-    const stored = localStorage.getItem('tcg-registrations');
-    return stored ? JSON.parse(stored) : [];
-  });
+  const [errors, setErrors] = useState({});
 
-  const save = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+  const setLoadingKey = (key, val) => setLoading((p) => ({ ...p, [key]: val }));
+  const setErrorKey = (key, msg) => setErrors((p) => ({ ...p, [key]: msg }));
 
-  const addProgram = (p) => {
-    const updated = [...programs, { ...p, id: Date.now() }];
-    setPrograms(updated); save('tcg-programs', updated);
+  const loadPrograms = useCallback(async () => {
+    setLoadingKey('programs', true);
+    try { const r = await api.fetchPrograms(); setPrograms(r.data); }
+    catch (e) { setErrorKey('programs', e.message); }
+    finally { setLoadingKey('programs', false); }
+  }, []);
+
+  const loadDevotionals = useCallback(async () => {
+    setLoadingKey('devotionals', true);
+    try { const r = await api.fetchDevotionals(); setDevotionals(r.data); }
+    catch (e) { setErrorKey('devotionals', e.message); }
+    finally { setLoadingKey('devotionals', false); }
+  }, []);
+
+  const loadLatestDevotional = useCallback(async () => {
+    setLoadingKey('latestDevotional', true);
+    try { const r = await api.fetchLatestDevotional(); setLatestDevotional(r.data); }
+    catch (e) { setLatestDevotional(null); }
+    finally { setLoadingKey('latestDevotional', false); }
+  }, []);
+
+  const loadTestimonies = useCallback(async () => {
+    setLoadingKey('testimonies', true);
+    try { const r = await api.fetchTestimonies(); setTestimonies(r.data); }
+    catch (e) { setErrorKey('testimonies', e.message); }
+    finally { setLoadingKey('testimonies', false); }
+  }, []);
+
+  useEffect(() => {
+    loadPrograms();
+    loadDevotionals();
+    loadLatestDevotional();
+    loadTestimonies();
+  }, []);
+
+  const loadAllTestimonies = useCallback(async () => {
+    try { const r = await api.fetchAllTestimonies(); setAllTestimonies(r.data); }
+    catch (e) { setErrorKey('allTestimonies', e.message); }
+  }, []);
+
+  const loadPrayerRequests = useCallback(async () => {
+    setLoadingKey('prayerRequests', true);
+    try { const r = await api.fetchPrayerRequests(); setPrayerRequests(r.data); }
+    catch (e) { setErrorKey('prayerRequests', e.message); }
+    finally { setLoadingKey('prayerRequests', false); }
+  }, []);
+
+  const loadRegistrations = useCallback(async () => {
+    setLoadingKey('registrations', true);
+    try { const r = await api.fetchRegistrations(); setRegistrations(r.data); }
+    catch (e) { setErrorKey('registrations', e.message); }
+    finally { setLoadingKey('registrations', false); }
+  }, []);
+
+  // Programs
+  const addProgram = async (data) => { const r = await api.createProgram(data); setPrograms((p) => [r.data, ...p]); return r; };
+  const editProgram = async (id, data) => { const r = await api.updateProgram(id, data); setPrograms((p) => p.map((x) => (x._id === id ? r.data : x))); return r; };
+  const removeProgram = async (id) => { await api.deleteProgram(id); setPrograms((p) => p.filter((x) => x._id !== id)); };
+
+  // Devotionals
+  const addDevotional = async (data) => { const r = await api.createDevotional(data); setDevotionals((p) => [r.data, ...p]); setLatestDevotional(r.data); return r; };
+  const removeDevotional = async (id) => { await api.deleteDevotional(id); setDevotionals((p) => p.filter((x) => x._id !== id)); loadLatestDevotional(); };
+
+  // Testimonies
+  const submitTestimony = async (data) => api.submitTestimony(data);
+  const approveTestimony = async (id) => {
+    const r = await api.approveTestimony(id);
+    setAllTestimonies((p) => p.map((t) => (t._id === id ? r.data : t)));
+    setTestimonies((p) => [...p, r.data]);
+    return r;
   };
-  const deleteProgram = (id) => {
-    const updated = programs.filter(p => p.id !== id);
-    setPrograms(updated); save('tcg-programs', updated);
-  };
-  const updateProgram = (id, data) => {
-    const updated = programs.map(p => p.id === id ? { ...p, ...data } : p);
-    setPrograms(updated); save('tcg-programs', updated);
+  const removeTestimony = async (id) => {
+    await api.deleteTestimony(id);
+    setAllTestimonies((p) => p.filter((t) => t._id !== id));
+    setTestimonies((p) => p.filter((t) => t._id !== id));
   };
 
-  const addTestimony = (t) => {
-    const updated = [...testimonies, { ...t, id: Date.now(), approved: false }];
-    setTestimonies(updated); save('tcg-testimonies', updated);
-  };
-  const approveTestimony = (id) => {
-    const updated = testimonies.map(t => t.id === id ? { ...t, approved: true } : t);
-    setTestimonies(updated); save('tcg-testimonies', updated);
-  };
-  const deleteTestimony = (id) => {
-    const updated = testimonies.filter(t => t.id !== id);
-    setTestimonies(updated); save('tcg-testimonies', updated);
-  };
+  // Prayer
+  const submitPrayer = async (data) => api.submitPrayerRequest(data);
+  const markPrayed = async (id) => { const r = await api.markPrayerAsPrayed(id); setPrayerRequests((p) => p.map((x) => (x._id === id ? r.data : x))); return r; };
+  const removePrayerRequest = async (id) => { await api.deletePrayerRequest(id); setPrayerRequests((p) => p.filter((x) => x._id !== id)); };
 
-  const addDevotional = (d) => {
-    const updated = [...devotionals, { ...d, id: Date.now() }];
-    setDevotionals(updated); save('tcg-devotionals', updated);
-  };
-  const deleteDevotional = (id) => {
-    const updated = devotionals.filter(d => d.id !== id);
-    setDevotionals(updated); save('tcg-devotionals', updated);
-  };
-
-  const addPrayerRequest = (r) => {
-    const updated = [...prayerRequests, { ...r, id: Date.now(), date: new Date().toISOString().split('T')[0] }];
-    setPrayerRequests(updated); save('tcg-prayer-requests', updated);
-  };
-  const deletePrayerRequest = (id) => {
-    const updated = prayerRequests.filter(r => r.id !== id);
-    setPrayerRequests(updated); save('tcg-prayer-requests', updated);
-  };
-
-  const addRegistration = (r) => {
-    const updated = [...registrations, { ...r, id: Date.now(), date: new Date().toISOString().split('T')[0] }];
-    setRegistrations(updated); save('tcg-registrations', updated);
-  };
+  // Registrations
+  const submitRegistration = async (data) => api.submitRegistration(data);
+  const removeRegistration = async (id) => { await api.deleteRegistration(id); setRegistrations((p) => p.filter((x) => x._id !== id)); };
 
   return (
     <MinistryContext.Provider value={{
-      programs, testimonies, devotionals, prayerRequests, registrations,
-      addProgram, deleteProgram, updateProgram,
-      addTestimony, approveTestimony, deleteTestimony,
-      addDevotional, deleteDevotional,
-      addPrayerRequest, deletePrayerRequest,
-      addRegistration,
+      programs, devotionals, latestDevotional, testimonies, allTestimonies,
+      prayerRequests, registrations, loading, errors,
+      loadAllTestimonies, loadPrayerRequests, loadRegistrations, loadPrograms, loadDevotionals,
+      addProgram, editProgram, removeProgram,
+      addDevotional, removeDevotional,
+      submitTestimony, approveTestimony, removeTestimony,
+      submitPrayer, markPrayed, removePrayerRequest,
+      submitRegistration, removeRegistration,
     }}>
       {children}
     </MinistryContext.Provider>

@@ -31,7 +31,7 @@ export default function Features() {
             <div key={i} className={`program-card p-7 rounded-2xl group
               ${dark
                 ? 'bg-white/4 border border-white/8 hover:border-blue-500/30 hover:bg-white/6'
-                : 'bg-white border border-gray-600 hover:border-blue-700 shadow-sm hover:shadow-md'}`}>
+                : 'bg-white border border-gray-100 hover:border-blue-200 shadow-sm hover:shadow-md'}`}>
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform
                 bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5]`}>
                 {f.icon}

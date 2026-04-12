@@ -14,7 +14,7 @@ export default function About() {
           <div className="relative">
             <div className={`rounded-3xl overflow-hidden aspect-[4/3] relative hero-gradient`}>
               <div className="absolute inset-0 flex flex-col items-center justify-center p-12">
-                <img src="/logowhite.png" alt="The Call Global" className="h-36 w-36 object-contain mb-6 float-anim" />
+                <img src="/logowhite.jpeg" alt="The Call Global" className="h-36 w-36 object-contain mb-6 float-anim" />
                 <blockquote className="text-white text-center font-body text-xl italic leading-relaxed">
                   "The gifts and the calling of God are irrevocable."
                 </blockquote>

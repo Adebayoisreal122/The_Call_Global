@@ -38,7 +38,7 @@ export default function Programs() {
             {upcoming.map(p => (
               <div key={p.id} className="program-card rounded-2xl overflow-hidden group bg-white/6 border border-white/10 hover:border-blue-400/30 hover:bg-white/10">
                 <div className="relative h-32 hero-gradient flex items-center justify-center overflow-hidden">
-                  <img src="/logowhite.png" alt="" className="absolute opacity-10 h-24 w-24 object-contain" />
+                  <img src="/logowhite.jpeg" alt="" className="absolute opacity-10 h-24 w-24 object-contain" />
                   <div className={`relative z-10 inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${typeBadge[p.type] || 'text-blue-300 bg-blue-500/15'}`}>
                     {p.type}
                   </div>
