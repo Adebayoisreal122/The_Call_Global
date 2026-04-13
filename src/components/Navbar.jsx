@@ -31,8 +31,8 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 right-0 z-50 nav-glass transition-all duration-300
       ${hasBg
         ? dark
-          ? 'bg-[#030a2e]/95 border-b border-white/10 shadow-lg shadow-black/30'
-          : 'bg-white/95 border-b border-blue-100 shadow-sm'
+          ? 'bg-[#030a2e]/65 border-b border-white/40 shadow-lg shadow-black/30'
+          : 'bg-white/45 border-b border-blue-500 shadow-sm'
         : 'bg-transparent'
       }`}>
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
@@ -42,7 +42,7 @@ export default function Navbar() {
             src={dark || !hasBg ? '/logowhite.png' : '/logo.png'}
             alt="The Call Global"
             className="h-12 w-12 object-contain rounded-full transition-all group-hover:scale-105"
-            style={dark || !hasBg ? { filter: 'brightness(1.1)' } : {}}
+            style={dark || !hasBg ? { filter: 'brightness(2.1)' } : {}}
           />
           <div>
             <div className={`font-display text-lg font-bold leading-tight ${dark || !hasBg ? 'brand-text-light' : 'brand-text'}`}>
@@ -58,8 +58,8 @@ export default function Navbar() {
             <a key={l.label} href={l.href}
               className={`text-sm font-medium transition-colors
                 ${dark || !hasBg
-                  ? 'text-blue-100/80 hover:text-white'
-                  : 'text-gray-600 hover:text-blue-700'
+                  ? 'text-grey-900 hover:text-blue-600'
+                  : 'text-gray-900 hover:text-blue-900'
                 }`}>
               {l.label}
             </a>
