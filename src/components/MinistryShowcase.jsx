@@ -23,7 +23,7 @@ export default function MinistryShowcase() {
       subtitle: 'Transforming Lives Through Truth',
     },
     {
-      image: '/Photo 7.jpeg',
+      image: '/Photo 9.jpeg',
       title: 'Global Outreach',
       subtitle: 'Reaching Souls Across Nations',
     },
@@ -38,7 +38,7 @@ export default function MinistryShowcase() {
       subtitle: 'Standing in Faith and Unity',
     },
         {
-      image: '/Photo 6.jpeg',
+      image: '/Photo 7.jpeg',
       title: 'Community Impact',
       subtitle: 'Touching Lives Beyond the Church Walls',
     },
