@@ -44,7 +44,7 @@ export default function AdminLayout() {
       {/* Brand */}
       <div className="p-6 border-b border-blue-400/15">
         <Link to="/" className="flex items-center gap-3">
-          <img src="/logowhite.jpeg" alt="TCG" className="h-9 w-9 object-contain rounded-full" />
+          <img src="/logowhite.png" alt="TCG" className="h-9 w-9 object-contain rounded-full" />
           <div>
             <div className="font-display text-sm font-bold brand-text-light">The Call Global</div>
             <div className="text-blue-400/50 text-xs">Admin Portal</div>
