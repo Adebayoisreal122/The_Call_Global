@@ -18,12 +18,12 @@ export default function MinistryShowcase() {
       subtitle: 'Experiencing God’s Presence Together',
     },
     {
-      image: '/Photo 2.jpeg',
+      image: '/Photo 3.jpeg',
       title: 'The Word in Action',
       subtitle: 'Transforming Lives Through Truth',
     },
     {
-      image: '/Photo 3.jpeg',
+      image: '/Photo 7.jpeg',
       title: 'Global Outreach',
       subtitle: 'Reaching Souls Across Nations',
     },
@@ -32,6 +32,17 @@ export default function MinistryShowcase() {
       title: 'Our Leader',
       subtitle: 'A Voice Called for This Generation',
     },
+        {
+      image: '/Photo 8.jpeg',
+      title: 'Prayer Moments',
+      subtitle: 'Standing in Faith and Unity',
+    },
+        {
+      image: '/Photo 6.jpeg',
+      title: 'Community Impact',
+      subtitle: 'Touching Lives Beyond the Church Walls',
+    },
+  
   ];
 
   return (
@@ -72,7 +83,7 @@ export default function MinistryShowcase() {
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center px-6">
+                <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-6">
                   
                   {/* Animated Text */}
                   <h3 className="text-2xl md:text-4xl font-bold text-white mb-3 animate-fadeInUp">

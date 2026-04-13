@@ -55,7 +55,7 @@ export default function Contact() {
           <div className="space-y-6">
             {[{ icon: <Mail size={18} />, label: 'Email', val: 'thecalglobal1@gmail.com' },
               { icon: <Phone size={18} />, label: 'Phone / WhatsApp', val: '+234 701 832 0296' },
-              { icon: <MapPin size={18} />, label: 'Base Location', val: 'Lagos, Nigeria (Global Ministry)' },
+              // { icon: <MapPin size={18} />, label: 'Base Location', val: 'Lagos, Nigeria (Global Ministry)' },
             ].map((c) => (
               <div key={c.label} className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 flex-shrink-0">{c.icon}</div>

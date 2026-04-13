@@ -10,6 +10,7 @@ import { BookOpen } from 'lucide-react';
 import { useMinistry } from '../context/MinistryContext';
 import { Link } from 'react-router-dom';
 import MinistryShowcase from '../components/MinistryShowcase';
+import Donation from '../components/Donation';
 
 function DailyWordBanner() {
   const { dark } = useTheme();
@@ -42,6 +43,7 @@ export default function HomePage() {
       <Features />
       <MinistryShowcase/>
       <About />
+      <Donation/>
       <DailyWordBanner />
       <Programs />
       <Testimonies />
