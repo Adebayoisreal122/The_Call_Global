@@ -11,6 +11,7 @@ import { useMinistry } from '../context/MinistryContext';
 import { Link } from 'react-router-dom';
 import MinistryShowcase from '../components/MinistryShowcase';
 import Donation from '../components/Donation';
+import MinistryPrograms from '../components/MinistryPrograms';
 
 function DailyWordBanner() {
   const { dark } = useTheme();
@@ -44,6 +45,7 @@ export default function HomePage() {
       <MinistryShowcase/>
       <About />
       <Donation/>
+      <MinistryPrograms />
       <DailyWordBanner />
       <Programs />
       <Testimonies />
