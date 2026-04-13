@@ -4,8 +4,8 @@ import { useMinistry } from '../context/MinistryContext';
 import { MessageCircle, Send, Users, ArrowRight, Loader2 } from 'lucide-react';
 
 const communities = [
-  { icon: <MessageCircle size={22} />, label: 'WhatsApp Community', desc: 'Join our active WhatsApp community for daily devotionals and updates.', color: 'from-green-500 to-green-600', href: 'https://chat.whatsapp.com/your-link' },
-  { icon: <Send size={22} />, label: 'Telegram Channel', desc: 'Get ministry updates, teachings, and prayer alerts on Telegram.', color: 'from-blue-500 to-blue-600', href: 'https://t.me/thecallglobal' },
+  { icon: <MessageCircle size={22} />, label: 'WhatsApp Community', desc: 'Join our active WhatsApp community for daily devotionals and updates.', color: 'from-green-500 to-green-600', href: 'https://chat.whatsapp.com/C3rIl9rSM5S467e0ohlhhG?mode=gi_t' },
+  { icon: <Send size={22} />, label: 'Telegram Channel', desc: 'Get ministry updates, teachings, and prayer alerts on Telegram.', color: 'from-blue-500 to-blue-600', href: 'https://t.me/Thecall023' },
   { icon: <Users size={22} />, label: 'Online Community', desc: 'Connect with believers worldwide through our digital community platform.', color: 'from-violet-500 to-violet-600', href: '#' },
 ];
 

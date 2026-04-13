@@ -53,8 +53,8 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="space-y-6">
-            {[{ icon: <Mail size={18} />, label: 'Email', val: 'hello@thecallglobal.org' },
-              { icon: <Phone size={18} />, label: 'Phone / WhatsApp', val: '+234 800 000 0000' },
+            {[{ icon: <Mail size={18} />, label: 'Email', val: 'thecalglobal1@gmail.com' },
+              { icon: <Phone size={18} />, label: 'Phone / WhatsApp', val: '+234 701 832 0296' },
               { icon: <MapPin size={18} />, label: 'Base Location', val: 'Lagos, Nigeria (Global Ministry)' },
             ].map((c) => (
               <div key={c.label} className="flex items-start gap-4">
