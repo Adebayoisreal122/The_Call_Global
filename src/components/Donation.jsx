@@ -8,22 +8,16 @@ export default function Donation() {
 
   const accounts = [
     {
-      bank: 'Access Bank',
-      name: 'The Call Global Ministry',
-      number: '0123456789',
-      purpose: 'Tithes & Offering',
+      bank: 'Palmpay',
+      name: 'Ajibola Pamilerin',
+      number: '9078757151',
+      purpose: 'Donations',
     },
     {
-      bank: 'GTBank',
-      name: 'The Call Global Ministry',
-      number: '9876543210',
-      purpose: 'Partnership & Support',
-    },
-    {
-      bank: 'UBA',
-      name: 'The Call Global Ministry',
-      number: '1122334455',
-      purpose: 'Sponsorship',
+      bank: 'Kuda',
+      name: 'Gloria Adunmo Bukunmi',
+      number: '3002359073',
+      purpose: 'Partnership & Sponsorship',
     },
   ];
 
@@ -51,7 +45,7 @@ export default function Donation() {
         </p>
 
         {/* Accounts Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid item-center md:grid-cols-3 gap-6">
 
           {accounts.map((acc, index) => (
             <div

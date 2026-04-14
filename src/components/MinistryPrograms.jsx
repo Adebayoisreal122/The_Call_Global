@@ -6,42 +6,42 @@ export default function MinistryPrograms() {
   const programs = [
     {
       title: 'School of Ministry',
-      image: '/images/school.jpg',
+      image: '/School.jpg',
       desc: 'Equipping believers for deeper spiritual growth and service.',
     },
     {
       title: 'Discipleship Class',
-      image: '/images/discipleship.jpg',
+      image: '/Discipleship.jpg',
       desc: 'Building strong foundations in Christ.',
     },
     {
       title: 'Bible Class',
-      image: '/images/bible.jpg',
+      image: 'bible.jpg',
       desc: 'Understanding the Word with clarity and revelation.',
     },
     {
       title: 'Leadership Class',
-      image: '/images/leadership.jpg',
+      image: '/Leadership.jfif',
       desc: 'Raising leaders for kingdom impact.',
     },
     {
       title: 'Teenagers Discipleship',
-      image: '/images/teen-discipleship.jpg',
+      image: '/Teenagers.jfif',
       desc: 'Guiding the next generation in truth.',
     },
     {
       title: 'Teenagers Bible Class',
-      image: '/images/teen-bible.jpg',
+      image: '/Teenagers2.jfif',
       desc: 'Helping teens grow in God’s Word.',
     },
     {
       title: 'Clarion Call',
-      image: '/images/clarion.jpg',
+      image: '/Clarion.png',
       desc: 'A movement calling hearts back to God.',
     },
     {
       title: 'University Chapters',
-      image: '/images/university.jpg',
+      image: '/University.jpg',
       desc: 'Start a chapter in your campus and impact lives.',
     },
   ];
