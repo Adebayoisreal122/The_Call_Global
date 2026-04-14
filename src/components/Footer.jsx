@@ -65,7 +65,7 @@ export default function Footer() {
           {/* ── Brand + Socials ── */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logowhite.jpeg" alt="The Call Global" className="h-12 w-12 object-contain rounded-full" />
+              <img src="/logowhite.png" alt="The Call Global" className="h-12 w-12 object-contain rounded-full" />
               <div>
                 <div className="font-display text-base font-bold brand-text-light">The Call Global</div>
                 <div className="text-xs tracking-widest uppercase text-blue-300/50">Ministry</div>
