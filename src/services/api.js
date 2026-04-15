@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL || 'https://the-call-global-backend.onrender.com/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -156,6 +156,26 @@ export const fetchRegistrations = () =>
 
 export const deleteRegistration = (id) =>
   fetch(`${BASE_URL}/registrations/${id}`, {
+    method: 'DELETE',
+    headers: authHeaders(),
+  }).then(handleResponse);
+
+// ─── PROGRAM REGISTRATIONS ────────────────────────────────────────────────────
+
+export const registerForProgram = (data) =>
+  fetch(`${BASE_URL}/program-registrations`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  }).then(handleResponse);
+
+export const fetchProgramRegistrations = (program) =>
+  fetch(`${BASE_URL}/program-registrations${program ? `?program=${encodeURIComponent(program)}` : ''}`, {
+    headers: authHeaders(),
+  }).then(handleResponse);
+
+export const deleteProgramRegistration = (id) =>
+  fetch(`${BASE_URL}/program-registrations/${id}`, {
     method: 'DELETE',
     headers: authHeaders(),
   }).then(handleResponse);
