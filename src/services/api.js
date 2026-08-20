@@ -179,3 +179,72 @@ export const deleteProgramRegistration = (id) =>
     method: 'DELETE',
     headers: authHeaders(),
   }).then(handleResponse);
+
+// ─── BOOKS ───────────────────────────────────────────────────────────────────
+
+export const fetchBooks = () =>
+  fetch(`${BASE_URL}/books`).then(handleResponse);
+
+export const fetchBook = (id) =>
+  fetch(`${BASE_URL}/books/${id}`).then(handleResponse);
+
+export const createBook = (data) =>
+  fetch(`${BASE_URL}/books`, {
+    method: 'POST',
+    headers: authHeaders(),
+    body: JSON.stringify(data),
+  }).then(handleResponse);
+
+export const updateBook = (id, data) =>
+  fetch(`${BASE_URL}/books/${id}`, {
+    method: 'PUT',
+    headers: authHeaders(),
+    body: JSON.stringify(data),
+  }).then(handleResponse);
+
+export const deleteBook = (id) =>
+  fetch(`${BASE_URL}/books/${id}`, {
+    method: 'DELETE',
+    headers: authHeaders(),
+  }).then(handleResponse);
+
+export const submitPurchase = (bookId, data) =>
+  fetch(`${BASE_URL}/books/${bookId}/purchase`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  }).then(handleResponse);
+
+export const downloadBookByToken = (token) =>
+  fetch(`${BASE_URL}/books/download/${token}`).then(handleResponse);
+
+export const checkOrderStatus = (email, bookId = '') =>
+  fetch(`${BASE_URL}/books/orders/check?email=${encodeURIComponent(email)}${bookId ? `&bookId=${bookId}` : ''}`).then(handleResponse);
+
+export const fetchAllOrders = (status = '') =>
+  fetch(`${BASE_URL}/books/orders${status ? `?status=${status}` : ''}`, {
+    headers: authHeaders(),
+  }).then(handleResponse);
+
+export const fetchOrder = (id) =>
+  fetch(`${BASE_URL}/books/orders/${id}`, { headers: authHeaders() }).then(handleResponse);
+
+export const approveOrder = (id, adminNote = '') =>
+  fetch(`${BASE_URL}/books/orders/${id}/approve`, {
+    method: 'PATCH',
+    headers: authHeaders(),
+    body: JSON.stringify({ adminNote }),
+  }).then(handleResponse);
+
+export const rejectOrder = (id, adminNote = '') =>
+  fetch(`${BASE_URL}/books/orders/${id}/reject`, {
+    method: 'PATCH',
+    headers: authHeaders(),
+    body: JSON.stringify({ adminNote }),
+  }).then(handleResponse);
+
+export const deleteOrder = (id) =>
+  fetch(`${BASE_URL}/books/orders/${id}`, {
+    method: 'DELETE',
+    headers: authHeaders(),
+  }).then(handleResponse);

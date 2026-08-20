@@ -3,17 +3,16 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useMinistry } from '../context/MinistryContext';
 import { useAuth } from '../context/AuthContext';
-import { Calendar, BookOpen, Star, MessageSquare, Users, ArrowRight, Loader2 } from 'lucide-react';
+import { Calendar, BookOpen, Star, MessageSquare, Users, ArrowRight, Loader2, ShoppingBag, ClipboardList } from 'lucide-react';
 
 export default function AdminDashboard() {
   const { dark } = useTheme();
   const { admin } = useAuth();
   const {
-    programs, devotionals, allTestimonies, prayerRequests, registrations,
-    loading, loadAllTestimonies, loadPrayerRequests, loadRegistrations,
+    programs, devotionals, allTestimonies, prayerRequests,
+    registrations, loading, loadAllTestimonies, loadPrayerRequests, loadRegistrations,
   } = useMinistry();
 
-  // Load admin-only data when dashboard mounts
   useEffect(() => {
     loadAllTestimonies();
     loadPrayerRequests();
@@ -23,11 +22,13 @@ export default function AdminDashboard() {
   const card = `rounded-2xl p-6 ${dark ? 'bg-white/4 border border-white/8' : 'bg-white border border-gray-100 shadow-sm'}`;
 
   const stats = [
-    { label: 'Programs', value: programs.length, icon: <Calendar size={20} />, path: '/admin/programs', color: 'from-blue-600 to-blue-700', sub: `${programs.filter((p) => p.upcoming).length} upcoming` },
+    { label: 'Programs', value: programs.length, icon: <Calendar size={20} />, path: '/admin/programs', color: 'from-blue-600 to-blue-700', sub: `${programs.filter(p => p.upcoming).length} upcoming` },
     { label: 'Devotionals', value: devotionals.length, icon: <BookOpen size={20} />, path: '/admin/devotionals', color: 'from-indigo-600 to-indigo-700', sub: 'Published' },
-    { label: 'Testimonies', value: allTestimonies.length, icon: <Star size={20} />, path: '/admin/testimonies', color: 'from-violet-600 to-violet-700', sub: `${allTestimonies.filter((t) => !t.approved).length} pending` },
-    { label: 'Prayer Requests', value: prayerRequests.length, icon: <MessageSquare size={20} />, path: '/admin/prayer-requests', color: 'from-sky-600 to-sky-700', sub: `${prayerRequests.filter((r) => !r.isRead).length} unread` },
+    { label: 'Testimonies', value: allTestimonies.length, icon: <Star size={20} />, path: '/admin/testimonies', color: 'from-violet-600 to-violet-700', sub: `${allTestimonies.filter(t => !t.approved).length} pending` },
+    { label: 'Prayer Requests', value: prayerRequests.length, icon: <MessageSquare size={20} />, path: '/admin/prayer-requests', color: 'from-sky-600 to-sky-700', sub: `${prayerRequests.filter(r => !r.isRead).length} unread` },
     { label: 'Registrations', value: registrations.length, icon: <Users size={20} />, path: '/admin/registrations', color: 'from-cyan-600 to-cyan-700', sub: 'Total members' },
+    { label: 'Books Store', value: '—', icon: <ShoppingBag size={20} />, path: '/admin/books', color: 'from-orange-600 to-orange-700', sub: 'Manage books' },
+    { label: 'Book Orders', value: '—', icon: <ClipboardList size={20} />, path: '/admin/book-orders', color: 'from-rose-600 to-rose-700', sub: 'Approve orders' },
   ];
 
   const Spinner = () => (
@@ -38,10 +39,10 @@ export default function AdminDashboard() {
 
   return (
     <div className="space-y-8 max-w-6xl">
-      {/* Welcome banner */}
+      {/* Welcome */}
       <div className={`${card} relative overflow-hidden`}>
         <div className="absolute right-6 top-4 opacity-5 pointer-events-none">
-          <img src="/logowhite.png" alt="" className="h-32 w-32 object-contain" />
+          <img src="/logowhite.jpeg" alt="" className="h-32 w-32 object-contain" />
         </div>
         <div className="relative">
           <h1 className={`font-display text-3xl font-bold mb-1 ${dark ? 'text-white' : 'text-gray-900'}`}>
@@ -61,8 +62,8 @@ export default function AdminDashboard() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        {stats.map((s) => (
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {stats.map(s => (
           <Link key={s.label} to={s.path}
             className={`${card} group hover:border-blue-500/30 transition-all`}>
             <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform`}>
@@ -77,7 +78,7 @@ export default function AdminDashboard() {
         ))}
       </div>
 
-      {/* Recent activity row */}
+      {/* Recent activity */}
       <div className="grid md:grid-cols-2 gap-6">
         {/* Recent Registrations */}
         <div className={card}>
@@ -91,7 +92,7 @@ export default function AdminDashboard() {
             <p className={`text-sm ${dark ? 'text-gray-500' : 'text-gray-400'}`}>No registrations yet.</p>
           ) : (
             <div className="space-y-3">
-              {[...registrations].slice(0, 5).map((r) => (
+              {[...registrations].slice(0, 5).map(r => (
                 <div key={r._id} className={`flex items-center gap-3 py-2 border-b ${dark ? 'border-white/5' : 'border-gray-50'}`}>
                   <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                     {r.name?.[0] || '?'}
@@ -117,11 +118,11 @@ export default function AdminDashboard() {
               View all <ArrowRight size={12} />
             </Link>
           </div>
-          {allTestimonies.filter((t) => !t.approved).length === 0 ? (
+          {allTestimonies.filter(t => !t.approved).length === 0 ? (
             <p className={`text-sm ${dark ? 'text-gray-500' : 'text-gray-400'}`}>No pending testimonies ✅</p>
           ) : (
             <div className="space-y-3">
-              {allTestimonies.filter((t) => !t.approved).slice(0, 4).map((t) => (
+              {allTestimonies.filter(t => !t.approved).slice(0, 4).map(t => (
                 <div key={t._id} className={`p-3 rounded-xl ${dark ? 'bg-white/5' : 'bg-gray-50'}`}>
                   <div className="flex items-center gap-2 mb-1">
                     <span className={`text-sm font-medium ${dark ? 'text-white' : 'text-gray-900'}`}>{t.name}</span>
@@ -135,17 +136,18 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* Quick actions */}
+      {/* Quick Actions */}
       <div className={card}>
         <h3 className={`font-display font-semibold mb-5 ${dark ? 'text-white' : 'text-gray-900'}`}>Quick Actions</h3>
         <div className="flex flex-wrap gap-3">
           {[
             { label: '+ New Program', to: '/admin/programs' },
             { label: '+ Post Devotional', to: '/admin/devotionals' },
+            { label: '+ Add Book', to: '/admin/books' },
+            { label: 'Review Book Orders', to: '/admin/book-orders' },
             { label: 'Review Testimonies', to: '/admin/testimonies' },
             { label: 'View Prayer Requests', to: '/admin/prayer-requests' },
-            { label: 'View Registrations', to: '/admin/registrations' },
-          ].map((a) => (
+          ].map(a => (
             <Link key={a.label} to={a.to} className="btn-outline-navy px-5 py-2 rounded-full text-sm">
               {a.label}
             </Link>

@@ -5,7 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import { useMinistry } from '../context/MinistryContext';
 import {
   LayoutDashboard, Calendar, BookOpen, Star,
-  MessageSquare, Users, Sun, Moon, Menu, X, ChevronRight, LogOut, Settings,
+  MessageSquare, Users, Sun, Moon, Menu, X,
+  ChevronRight, LogOut, Settings, ShoppingBag, ClipboardList,
 } from 'lucide-react';
 
 const navItems = [
@@ -15,6 +16,8 @@ const navItems = [
   { path: '/admin/testimonies', icon: <Star size={18} />, label: 'Testimonies' },
   { path: '/admin/prayer-requests', icon: <MessageSquare size={18} />, label: 'Prayer Requests' },
   { path: '/admin/registrations', icon: <Users size={18} />, label: 'Registrations' },
+  { path: '/admin/books', icon: <ShoppingBag size={18} />, label: 'Books Store' },
+  { path: '/admin/book-orders', icon: <ClipboardList size={18} />, label: 'Book Orders' },
   { path: '/admin/settings', icon: <Settings size={18} />, label: 'Settings' },
 ];
 
@@ -27,24 +30,23 @@ export default function AdminLayout() {
   const { prayerRequests, allTestimonies, registrations } = useMinistry();
 
   const isActive = (path, exact) =>
-    exact ? location.pathname === path : location.pathname === path || location.pathname.startsWith(path + '/');
+    exact
+      ? location.pathname === path
+      : location.pathname === path || location.pathname.startsWith(path + '/');
 
   const badges = {
-    '/admin/prayer-requests': prayerRequests.filter((r) => !r.isRead).length || 0,
-    '/admin/testimonies': allTestimonies.filter((t) => !t.approved).length || 0,
+    '/admin/prayer-requests': prayerRequests.filter(r => !r.isRead).length || 0,
+    '/admin/testimonies': allTestimonies.filter(t => !t.approved).length || 0,
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate('/admin/login');
-  };
+  const handleLogout = () => { logout(); navigate('/admin/login'); };
 
   const Sidebar = () => (
     <div className="h-full flex flex-col admin-sidebar">
       {/* Brand */}
       <div className="p-6 border-b border-blue-400/15">
         <Link to="/" className="flex items-center gap-3">
-          <img src="/logowhite.png" alt="TCG" className="h-9 w-9 object-contain rounded-full" />
+          <img src="/logowhite.jpeg" alt="TCG" className="h-9 w-9 object-contain rounded-full" />
           <div>
             <div className="font-display text-sm font-bold brand-text-light">The Call Global</div>
             <div className="text-blue-400/50 text-xs">Admin Portal</div>
@@ -54,7 +56,7 @@ export default function AdminLayout() {
 
       {/* Nav */}
       <nav className="flex-1 py-6 px-3 space-y-1 overflow-y-auto">
-        {navItems.map((item) => {
+        {navItems.map(item => {
           const active = isActive(item.path, item.exact);
           const badge = badges[item.path];
           return (
@@ -86,8 +88,8 @@ export default function AdminLayout() {
       {/* Admin info + logout */}
       <div className="p-4 border-t border-blue-400/15 space-y-2">
         {admin && (
-          <div className={`px-4 py-2.5 rounded-xl flex items-center gap-3`}>
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+          <div className="px-4 py-2.5 flex items-center gap-3">
+            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0a1a6b] to-[#1e3db5] flex items-center justify-center text-white text-xs font-bold">
               {admin.name?.[0] || 'A'}
             </div>
             <div className="min-w-0">
@@ -107,7 +109,7 @@ export default function AdminLayout() {
     </div>
   );
 
-  const pageTitle = navItems.find((n) => isActive(n.path, n.exact))?.label || 'Admin';
+  const pageTitle = navItems.find(n => isActive(n.path, n.exact))?.label || 'Admin';
 
   return (
     <div className={`min-h-screen flex ${dark ? 'bg-gray-950 text-white' : 'bg-gray-100 text-gray-900'}`}>
@@ -120,13 +122,12 @@ export default function AdminLayout() {
       {sidebarOpen && (
         <div className="lg:hidden fixed inset-0 z-50 flex">
           <div className="w-60 h-full flex-shrink-0"><Sidebar /></div>
-          <div className="flex-1 bg-black/50" onClick={() => setSidebarOpen(false)} />
+          <div className="flex-1 bg-black/60" onClick={() => setSidebarOpen(false)} />
         </div>
       )}
 
       {/* Main content */}
       <div className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
-        {/* Top bar */}
         <header className={`sticky top-0 z-40 px-6 py-4 flex items-center justify-between border-b nav-glass
           ${dark ? 'bg-gray-950/90 border-white/8' : 'bg-white/90 border-gray-200'}`}>
           <div className="flex items-center gap-3">
@@ -150,7 +151,6 @@ export default function AdminLayout() {
           </div>
         </header>
 
-        {/* Page content */}
         <main className="flex-1 p-6">
           <Outlet />
         </main>

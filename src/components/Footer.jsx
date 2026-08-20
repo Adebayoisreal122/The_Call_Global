@@ -30,25 +30,25 @@ const YouTubeIcon = ({ size = 16 }) => (
 const socials = [
   {
     icon: <FacebookIcon size={15} />,
-    href: 'https://www.facebook.com/share/18J4G3ECPG/?mibextid=wwXIfr',
+    href: 'https://facebook.com/thecallglobal',
     label: 'Facebook',
     hoverColor: 'hover:border-blue-500 hover:text-blue-400 hover:bg-blue-500/10',
   },
   {
     icon: <InstagramIcon size={15} />,
-    href: 'https://www.instagram.com/thecallglobal?igsh=ODlrd3AxYnQ4amI0',
+    href: 'https://instagram.com/thecallglobal',
     label: 'Instagram',
     hoverColor: 'hover:border-pink-500 hover:text-pink-400 hover:bg-pink-500/10',
   },
   {
     icon: <TikTokIcon size={15} />,
-    href: 'https://www.tiktok.com/@thecallglobal?_r=1&_t=ZN-95VeOEA4tZ0',
+    href: 'https://tiktok.com/@thecallglobal',
     label: 'TikTok',
     hoverColor: 'hover:border-white hover:text-white hover:bg-white/10',
   },
   {
     icon: <YouTubeIcon size={15} />,
-    href: 'https://youtube.com/@thecallglobal?si=9dzoUqlqf7miR8Nl',
+    href: 'https://youtube.com/@thecallglobal',
     label: 'YouTube',
     hoverColor: 'hover:border-red-500 hover:text-red-400 hover:bg-red-500/10',
   },
@@ -65,7 +65,7 @@ export default function Footer() {
           {/* ── Brand + Socials ── */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logowhite.png" alt="The Call Global" className="h-12 w-12 object-contain rounded-full" />
+              <img src="/logowhite.jpeg" alt="The Call Global" className="h-12 w-12 object-contain rounded-full" />
               <div>
                 <div className="font-display text-base font-bold brand-text-light">The Call Global</div>
                 <div className="text-xs tracking-widest uppercase text-blue-300/50">Ministry</div>

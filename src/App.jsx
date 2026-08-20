@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import DevotionalsPage from './pages/DevotionalsPage';
+import BooksPage from './pages/BooksPage';
 import AdminLayout from './admin/AdminLayout';
 import AdminLogin from './admin/AdminLogin';
 import ProtectedRoute from './admin/ProtectedRoute';
@@ -15,8 +16,10 @@ import AdminDevotionals from './admin/AdminDevotionals';
 import AdminTestimonies from './admin/AdminTestimonies';
 import AdminPrayerRequests from './admin/AdminPrayerRequests';
 import AdminRegistrations from './admin/AdminRegistrations';
-import { useTheme } from './context/ThemeContext';
 import AdminSettings from './admin/AdminSettings';
+import AdminBooks from './admin/AdminBooks';
+import AdminBookOrders from './admin/AdminBookOrders';
+import { useTheme } from './context/ThemeContext';
 
 function PublicLayout({ children }) {
   const { dark } = useTheme();
@@ -35,11 +38,12 @@ function AppRoutes() {
       {/* Public */}
       <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
       <Route path="/devotionals" element={<PublicLayout><DevotionalsPage /></PublicLayout>} />
+      <Route path="/books" element={<PublicLayout><BooksPage /></PublicLayout>} />
 
-      {/* Admin login — public */}
+      {/* Admin login */}
       <Route path="/admin/login" element={<AdminLogin />} />
 
-      {/* Admin panel — all routes inside are protected */}
+      {/* Admin panel — all protected */}
       <Route path="/admin" element={<ProtectedRoute />}>
         <Route element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
@@ -47,12 +51,13 @@ function AppRoutes() {
           <Route path="devotionals" element={<AdminDevotionals />} />
           <Route path="testimonies" element={<AdminTestimonies />} />
           <Route path="prayer-requests" element={<AdminPrayerRequests />} />
-          <Route path="settings" element={<AdminSettings />} />
           <Route path="registrations" element={<AdminRegistrations />} />
+          <Route path="books" element={<AdminBooks />} />
+          <Route path="book-orders" element={<AdminBookOrders />} />
+          <Route path="settings" element={<AdminSettings />} />
         </Route>
       </Route>
 
-      {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
