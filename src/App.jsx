@@ -20,6 +20,7 @@ import AdminSettings from './admin/AdminSettings';
 import AdminBooks from './admin/AdminBooks';
 import AdminBookOrders from './admin/AdminBookOrders';
 import { useTheme } from './context/ThemeContext';
+import BookDownloadPage from './pages/BookDownloadPage';
 
 function PublicLayout({ children }) {
   const { dark } = useTheme();
@@ -39,6 +40,7 @@ function AppRoutes() {
       <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
       <Route path="/devotionals" element={<PublicLayout><DevotionalsPage /></PublicLayout>} />
       <Route path="/books" element={<PublicLayout><BooksPage /></PublicLayout>} />
+      <Route path="/books/download/:token" element={<BookDownloadPage />} />
 
       {/* Admin login */}
       <Route path="/admin/login" element={<AdminLogin />} />
