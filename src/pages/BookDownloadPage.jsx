@@ -64,7 +64,7 @@ export default function BookDownloadPage() {
         {/* Logo */}
         <div className="flex justify-center mb-6">
 
-          <img src="/logowhite.jpeg" alt="The Call Global"
+          <img src="/logowhite.png" alt="The Call Global"
             className={`h-16 w-16 object-contain rounded-full ${dark ? '' : 'hidden'}`} />
           <img src="/logo.png" alt="The Call Global"
             className={`h-16 w-16 object-contain rounded-full ${dark ? 'hidden' : ''}`} />
